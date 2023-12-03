@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Список университетов</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #FFC0CB;
+            color: #800080;
+            font-family: Arial, sans-serif;
+        }
+
+        table {
+            margin-bottom: 5px;
+            color: #800080;
+            font-family: Arial, sans-serif;
+        }
+
+        th, td {
+            border-right: 1px solid #800080;
+            border-bottom: 1px solid #800080;
+            padding: 5px 10px;
+        }
+
+        button {
+            background-color: #800080;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        button:hover {
+            background-color: #FFB6C1;
+            color: #800080;
+        }
+    </style>
+    <script> function goToIndex() {
+            window.location.href = '/';
+        }
+    </script>
+</head>
+<body><h1>Список студентов</h1>
+<table class="my-table">
+    <tr>
+        <th>ФИО</th>
+        <th>Дата рождения</th>
+        <th>Университет</th>
+        <th>Дата поступления</th>
+        <th>Изменить</th>
+        <th>Удалить</th>
+    </tr>
+    {% for student in students %}
+    <tr>
+        <td>{{ student.full_name }}</td>
+        <td>{{ student.date_bern.strftime('%d.%m.%Y') }}</td>
+        <td>{{ student.university.short_name }}</td>
+        <td>{{ student.date_admission.strftime('%d.%m.%Y') }}</td>
+        <td>
+            <form action="{{ url_for('update_student', student_id=student.id) }}" method="get"
+                  style="display: inline-block;">
+                <button type="submit">Изменить</button>
+            </form>
+        </td>
+        <td>
+            <form action="{{ url_for('delete_student', student_id=student.id) }}" method="post"
+                  style="display: inline-block;"> {{ student.csrf_token }}
+                <button type="submit">Удалить</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<br><br><br><br>
+<button onclick="goToStartPage()">Вернуться на главную</button>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Изменение студента</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #FFC0CB;
+            font-family: Arial, sans-serif;
+        }
+
+        .submit-button {
+            background-color: #800080;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            margin-top: 2vh;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .form-style {
+            margin-bottom: 2vh;
+            border-color: #800080;
+            color: #800080;
+        }
+
+        label {
+            color: #800080;
+            font-weight: bold;
+        }
+
+        h1 {
+            color: #800080;
+        }
+
+    </style>
+</head>
+<body>
+<h1>Изменение студента</h1>
+<form action="{{ url_for('update_student', student_id=id) }}" method="post">
+    {{ form.csrf_token }}<br>
+    <label>{{ form.full_name.label }}</label><br>
+    {{ form.full_name(class="form-style", size=30) }}<br>
+    <label>{{ form.date_bern.label }}</label><br>
+    {{ form.date_bern(class="form-style", size=30) }}<br>
+    <label>{{ form.university.label }}</label><br>
+    {{ form.university(class="form-style") }}<br>
+    <label>{{ form.date_admission.label }}</label><br>
+    {{ form.date_admission(class="form-style") }}<br>
+    <button type="submit" class="submit-button">Изменить</button>
+</form>
+</body>
+</html>

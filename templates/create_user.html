@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #FFC0CB;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: #800080;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #800080;
+        }
+
+        input[type="submit"] {
+            background-color: #800080;
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: Arial, sans-serif;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #FFB6C1;
+            color: #800080;
+        }
+
+        label {
+            color: #800080;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+    </style>
+</head>
+<body>
+<h1>Создать пользователя</h1>
+<form method="POST" action="{{ url_for('create_user') }}">
+    {{ form.csrf_token }}
+    <label>{{ form.name.label }}</label> {{ form.name }}<br><br>
+    <label>{{ form.password.label }}</label> {{ form.password }}<br><br>
+    <label>{{ form.confirm_password.label }}</label> {{ form.confirm_password }}<br><br>
+    {{ form.submit }}<br><br>
+</form>
+</body>
+</html>

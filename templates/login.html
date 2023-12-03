@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Авторизация</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #FFC0CB;
+            font-family: Arial, sans-serif;
+            color: #800080;
+        }
+
+        h1 {
+            color: #800080;
+        }
+
+        h3 {
+            color: red;
+        }
+
+        label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        input[type="submit"], button {
+            background-color: #800080;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 5px 10px;
+            font-family: Arial, sans-serif;
+            margin: 5px;
+        }
+
+        input[type="submit"]:hover, button:hover {
+            background-color: #FFB6C1;
+            color: #800080;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+<h1>Авторизация</h1>
+{% if error %}
+    <h3>{{ error }}</h3>
+{% endif %}
+<form method="POST" action="{{ url_for('login') }}">
+    {{ form.csrf_token }}
+    <div>
+        <label>Имя пользователя:</label>
+        {{ form.name }}
+    </div>
+    <div>
+        <label>Пароль:</label>
+        {{ form.password }}
+    </div>
+    <div>
+        <input type="submit" value="Войти">
+        <button onclick="window.location.href='{{ url_for('create_user') }}'">Создать пользователя</button>
+    </div>
+</form>
+</body>
+</html>

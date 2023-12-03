@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+                        background-color: #FCE4EC;
+        }
+
+        h1 {
+            font-family: "Impact", sans-serif;
+            color: #FF4081;
+        }
+
+        form {
+            font-family: "Comic Sans MS", cursive;
+            color: #FF4081;
+        }
+    </style>
+</head>
+<body>
+<h1>Добавление cтудента</h1>
+<form action="/create_student" method="POST">
+    {{ form.csrf_token }}
+    <label for=>ФИО:</label>
+    {{ form.full_name }}<br>
+
+    <label for=>Дата рождения:</label>
+    {{ form.date_bern }}<br>
+
+    <label for=>Университет:</label>
+    {{ form.university }}<br>
+
+    <label for=>Год поступления:</label>
+    {{ form.date_admission }}<br>
+
+    <button style="background-color: #FF4081; color: white; border: none; padding: 10px 20px;" type="submit">
+        {{form.submit.label}}
+    </button>
+</form>
+</body>
+</html>

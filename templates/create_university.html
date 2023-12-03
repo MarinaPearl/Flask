@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+                        background-color: #FCE4EC;
+        }
+
+        h1 {
+            font-family: "Impact", sans-serif;
+            color: #FF4081;
+        }
+
+        form {
+            font-family: "Comic Sans MS", cursive;
+            color: #FF4081;
+        }
+    </style>
+</head>
+<body>
+<h1>Добавление университета</h1>
+<form action="/create_university" method="POST">
+    {{ form.csrf_token }}
+    <label for=>Название университета:</label>
+    {{ form.full_name }}<br>
+
+    <label for=>Короткое название университета:</label>
+    {{ form.short_name }}<br>
+
+    <label for=>Дата создания:</label>
+    {{ form.date_creation }}<br>
+
+    <button style="background-color: #FF4081; color: white; border: none; padding: 10px 20px;" type="submit">
+        {{form.submit.label}}
+    </button>
+</form>
+</body>
+</html>

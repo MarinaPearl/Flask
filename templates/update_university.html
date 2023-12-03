@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Изменение университета</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #faf0f5;
+            font-family: Arial, sans-serif;
+        }
+
+        form {
+            border: 1px solid #ff1493;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        label {
+            font-size: 16px;
+            color: #8b008b;
+            font-family: Verdana;
+        }
+
+        input {
+            margin-top: 10px;
+            margin-bottom: 20px;
+            display: block;
+            border: 1px solid #ff1493;
+            padding: 10px;
+            font-size: 16px;
+            color: #8b008b;
+            font-family: Verdana;
+        }
+
+        h1 {
+            color: #8b008b;
+            font-family: Georgia;
+        }
+
+        button {
+            padding: 10px;
+            color: white;
+            font-size: 14px;
+            border: none;
+            outline: none;
+            border-radius: 5px;
+            background-color: #ff1493;
+            font-family: Verdana;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #ff69b4;
+        }
+    </style>
+</head>
+<body>
+<h1>Изменение университета</h1>
+<form action="{{ url_for('update_university', university_id=id) }}" method="post">
+    {{ university.csrf_token }}
+    <label for>Новое название университета:</label>
+    <input type="text" name="full_name" value="{{ university.full_name }}">
+    <br>
+    <label for>Новое короткое название университета:</label>
+    <input type="text" name="short_name" value="{{ university.short_name }}">
+    <br>
+    <label for>Новая дата создания:</label>
+    <input type="date" name="date_creation" value="{{ university.date_creation }}">
+    <br>
+    <br>
+    <button type="submit">Изменить</button>
+</form>
+</body>
+</html>
